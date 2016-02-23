@@ -10,11 +10,26 @@ function makePuzzle() {
     for (var j = 0; j < puzzle[i].length; j++) {
       var cell = document.createElement('div');
       cell.className = 'empty cell';
-      cell.id = "c" + (i).toString() + "-" + (j).toString();
+      cell.id = 'c' + (i).toString() + "-" + (j).toString();
       $(row).append(cell);
     }
     $('.puzzle').append(row);
   }
+}
+
+function hintNumbers() {
+  var hint_row = document.createElement('div');
+  var hint_cell = document.createElement('p');
+  hint_cell.className = 'hint';
+  var hint_regex = /(O+)/g;
+  for (var i = 0; i < puzzle.length; i++) {
+    hints = puzzle[i].match(hint_regex);
+    for (var j = 0; j < hints.length; j++) {
+      hint_cell.text((hints[j].length));
+      $(hint_row).append(hint_cell);
+    }
+  }
+  $('main').append(hint_row);
 }
 
 $("#load-puzzle").click(function() {
@@ -41,7 +56,7 @@ $("#is-solved").click(function() {
   for (var i = 0; i < puzzle.length; i++) {
     var row_contents = "";
     for (var j = 0; j < puzzle[i].length; j++) {
-      row_contents += $('#c'+i+'-'+j).text();
+      row_contents += $('#c' + i + '-' + j).text();
     }
     solution.push(row_contents);
   }
