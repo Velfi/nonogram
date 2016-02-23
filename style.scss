@@ -1,0 +1,49 @@
+main {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  .controls {
+    height: 7rem;
+    line-height: 7rem;
+  }
+  .hint-row {
+    display: flex;
+    flex-flow: row nowrap;
+    text-align: center;
+    .hint-cell {
+      width: 7rem;
+    }
+  }
+  .hint-column {
+    display: none;
+    flex-flow: column;
+  }
+  .puzzle {
+    display: flex;
+    flex-flow: column;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    .row {
+      display: flex;
+      flex-flow: row;
+      .cell {
+        height: 7rem;
+        width: 7rem;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+      }
+    }
+  }
+}
+footer {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  height: 7rem;
+  line-height: 7rem;
+}
