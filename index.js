@@ -1,155 +1,181 @@
 // State stuff
 var puzzle = [
-  "XXXXXXXXXXXX",
-  "XXXOOOOOOXXX",
-  "XXOXXXXXXOXX",
-  "XOXXOXXOXXOX",
-  "XOXXOXXOXXOO",
-  "XOXXXXXXXXOO",
-  "XOXOXXXXOXOO",
-  "XOXOXXXXOXOO",
-  "XOXXOOOOXXOO",
-  "XXOXXXXXXOOX",
-  "XXXOOOOOOOXX",
-  "XXXXXXXXXXXX"
-];
-var easy_puzzle = ["XOOXX", "OXXOX", "OXXOX", "OXXOX", "XOOXO"];
-var grid_marker = "full";
-
-// Functions
-function makePuzzle() {
-  $('.puzzle').html('');
-  for (var i = 0; i < puzzle.length; i++) {
-    var row = document.createElement('div');
-    row.className = 'row';
-    row.id = "row" + (i).toString();
-    // row.id = 'row'+
-    for (var j = 0; j < puzzle[i].length; j++) {
-      var cell = document.createElement('div');
-      cell.className = 'cell no-mark';
-      $(cell).text(" ");
-      cell.id = 'c' + (i).toString() + "-" + (j).toString();
-      $(row).append(cell);
+  'XXXOOOOOOXXX',
+  'XXOXXXXXXOXX',
+  'XOXXOXXOXXOX',
+  'XOXXOXXOXXOO',
+  'XOXXXXXXXXOO',
+  'XOXOXXXXOXOO',
+  'XOXOXXXXOXOO',
+  'XOXXOOOOXXOO',
+  'XXOXXXXXXOOX',
+  'XXXOOOOOOOXX'
+]
+var easyPuzzle = ['XOOXX', 'OXXOX', 'OXXOX', 'OXXOX', 'XOOXO']
+var gridMarker = 'full'
+// *************** ***Functions*** ***************  Test puzzle array is
+// formatted correctly.
+function puzzleValidityChecker (puzzle_array) {
+  puzzle_array.length
+  var i = 0
+  while (i < puzzle_array.length) {
+    if (puzzle_array[i].length !== puzzle_array.length) {
+      return false
+    } else {
+      i++
     }
-    $('.puzzle').append(row);
   }
-  hints.row();
-  hints.column();
+  return true
 }
-
+puzzleValidityChecker(puzzle)
+// Assemble the puzzle grid and append it to the puzzle div. Also call functions
+// to create the hint row and hint column.
+function makePuzzle (puzzle_array) {
+  $('.puzzle').html('')
+  for (var i = 0; i < puzzle_array.length; i++) {
+    var row = document.createElement('div')
+    row.className = 'row'
+    row.id = 'row' + (i).toString()
+    // row.id = 'row'+
+    for (var j = 0; j < puzzle_array[i].length; j++) {
+      var cell = document.createElement('div')
+      cell.className = 'cell no-mark'
+      $(cell).text(' ')
+      cell.id = 'c' + (i).toString() + '-' + (j).toString()
+      $(row).append(cell)
+    }
+    $('.puzzle').append(row)
+  }
+  hints.row(puzzle_array)
+  hints.column(puzzle_array)
+}
+// Container of the logic for generating the hint numbers and placing them to
+// the top and the left of the puzzle.
 var hints = {
-  "regex": /(O+)/g,
-  "column": function() {
-    for (var i = 0; i < puzzle.length; i++) {
-      var hint_numbers = document.createElement('div');
-      hint_numbers.className = 'hint-numbers';
-      hintsmatcher = puzzle[i].match(hints.regex);
-      for (var j = 0; j < hintsmatcher.length; j++) {
-        var hint_number = document.createElement('p');
-        hint_number.className = 'hint-number';
-        $(hint_number).text((hintsmatcher[j].length));
-        $(hint_numbers).append($(hint_number));
+  // Use for finding groups of filled squares in a puzzle array.
+  hintRegex: /(O+)/g,
+  // Generate the hint column and append to hint-column div..
+  column: function (puzzle_array) {
+    for (var i = 0; i < puzzle_array.length; i++) {
+      var hintNumbers = document.createElement('div')
+      hintNumbers.className = 'hint-numbers'
+      var hintColumnMatches = puzzle_array[i].match(hints.hintRegex)
+      console.log(puzzle[i].match(this.hintRegex))
+      if (hintColumnMatches == null) {
+        var hintNumber = document.createElement('p')
+        hintNumber.className = 'hint-number'
+        $(hintNumber).text(' ')
+        $(hintNumbers).append($(hintNumber))
+      } else {
+        for (var j = 0; j < hintColumnMatches.length; j++) {
+          hintNumber = document.createElement('p')
+          hintNumber.className = 'hint-number'
+          $(hintNumber).text((hintColumnMatches[j].length))
+          $(hintNumbers).append($(hintNumber))
+        }
       }
-      $('.hint-column').append($(hint_numbers));
+      $('.hint-column').append($(hintNumbers))
     }
   },
-  "row": function() {
-    var rejiggered_array = hints.rowHelper();
-    console.log(rejiggered_array.length);
-    for (var i = 0; i < rejiggered_array.length; i++) {
-      var hint_numbers = document.createElement('div');
-      hint_numbers.className = 'hint-numbers';
-      hintsmatcher = rejiggered_array[i].match(hints.regex);
-      for (var j = 0; j < hintsmatcher.length; j++) {
-        var hint_number = document.createElement('p');
-        hint_number.className = 'hint-number';
-        $(hint_number).text((hintsmatcher[j].length));
-        $(hint_numbers).append($(hint_number));
+  // Generate the hint row and append to hint-row div..
+  row: function (puzzle_array) {
+    var hintRowArray = this.rowHelper(puzzle_array)
+    for (var i = 0; i < hintRowArray.length; i++) {
+      var hintNumbers = document.createElement('div')
+      hintNumbers.className = 'hint-numbers'
+      var hintRowMatches = hintRowArray[i].match(this.hintRegex)
+      if (hintRowMatches == null) {
+        var hintNumber = document.createElement('p')
+        hintNumber.className = 'hint-number'
+        $(hintNumber).text(' ')
+        $(hintNumbers).append($(hintNumber))
+      } else {
+        for (var j = 0; j < hintRowMatches.length; j++) {
+          hintNumber = document.createElement('p')
+          hintNumber.className = 'hint-number'
+          $(hintNumber).text((hintRowMatches[j].length))
+          $(hintNumbers).append($(hintNumber))
+        }
       }
-      $('.hint-row').append($(hint_numbers));
+      $('.hint-row').append($(hintNumbers))
     }
   },
-  "rowHelper": function() {
-    var row_array = [];
-    for (var i = 0; i < puzzle.length; i++) {
-      for (var j = 0; j < puzzle[i].length; j++) {
-        if (row_array[j] === undefined) {
-          row_array[j] = puzzle[i].charAt(j);
+  // Convert puzzle array into array usable by the hint row generator.
+  rowHelper: function (puzzle_array) {
+    var rowArray = []
+    for (var i = 0; i < puzzle_array.length; i++) {
+      for (var j = 0; j < puzzle_array[i].length; j++) {
+        if (rowArray[j] === undefined) {
+          rowArray[j] = puzzle_array[i].charAt(j)
         } else {
-          row_array[j] += puzzle[i].charAt(j);
+          rowArray[j] += puzzle_array[i].charAt(j)
         }
       }
     }
-    return row_array;
+    return rowArray
   }
-};
-
-$(".mark").click(function() {
+}
+// Set grid marker based on which button is pressed
+$('.mark').click(function () {
   switch (event.target.id) {
-    case "mark-full":
-      grid_marker = "full";
-      break;
-    case "mark-x":
-      grid_marker = "x";
-      break;
-    case "mark-erase":
-      grid_marker = "erase";
-      break;
+    case 'mark-full':
+      gridMarker = 'full'
+      break
+    case 'mark-x':
+      gridMarker = 'x'
+      break
+    case 'mark-erase':
+      gridMarker = 'erase'
+      break
     default:
-      break;
+      break
   }
-});
-
-$(".puzzle").click(function(event) {
-  if (event.target.className.split(" ")[0] !== "puzzle") {
-    switch (grid_marker) {
-      case "full":
-        $(event.target).html("<p>&#11035;</p>");
-        $(event.target).addClass("full-mark");
-        $(event.target).removeClass("x-mark");
-        $(event.target).removeClass("no-mark");
-        break;
-      case "x":
-        $(event.target).html("<p style='color: red'>&#128473;</p>");
-        $(event.target).removeClass("full-mark");
-        $(event.target).addClass("x-mark");
-        $(event.target).removeClass("no-mark");
-        break;
-      case "erase":
-        $(event.target).text(" ");
-        $(event.target).removeClass("full-mark");
-        $(event.target).removeClass("x-mark");
-        $(event.target).addClass("no-mark");
-        break;
+})
+// Mark grid with appropriate symbol on click
+$('.puzzle').click(function (event) {
+  if (event.target.className.split(' ')[0] !== 'puzzle') {
+    switch (gridMarker) {
+      case 'full':
+        $(event.target).html('<p>&#11035;</p>')
+        $(event.target).addClass('full-mark')
+        $(event.target).removeClass('x-mark')
+        $(event.target).removeClass('no-mark')
+        break
+      case 'x':
+        $(event.target).html('<p style="color: red">&#128473;</p>')
+        $(event.target).removeClass('full-mark')
+        $(event.target).addClass('x-mark')
+        $(event.target).removeClass('no-mark')
+        break
+      case 'erase':
+        $(event.target).text(' ')
+        $(event.target).removeClass('full-mark')
+        $(event.target).removeClass('x-mark')
+        $(event.target).addClass('no-mark')
+        break
       default:
-        break;
+        break
     }
   } else {
-    console.log("You clicked on something that wasn't a cell.");
+    console.log("You clicked on something that wasn't a cell.")
   }
-});
-
-$("#is-solved").click(function() {
-  var solution = [];
+})
+// Check player solution against puzzle. If match, win, else, keep trying.
+$('#is-solved').click(function () {
+  var solution = []
   for (var i = 0; i < puzzle.length; i++) {
-    var row_contents = "";
+    var rowContents = ''
     for (var j = 0; j < puzzle[i].length; j++) {
-      row_contents += $('#c' + i + '-' + j).text();
-      row_contents = row_contents.replace(/\s|\uD83D/g, "X");
-      row_contents = row_contents.replace(/\u2B1B/g, "O");
+      rowContents += $('#c' + i + '-' + j).text()
+      rowContents = rowContents.replace(/\s|\uD83D/g, 'X')
+      rowContents = rowContents.replace(/\u2B1B/g, 'O')
     }
-    solution.push(row_contents);
+    solution.push(rowContents)
   }
-  if (solution.toString() == puzzle.toString()) {
-    alert("Good job. You figured it out.");
+  if (solution.toString() === puzzle.toString()) {
+    alert('Good job. You figured it out.')
   } else {
-    alert("You haven't gotten it quite right yet. Just keep on trying.");
+    alert("You haven't gotten it quite right yet. Just keep on trying.")
   }
-});
-
-QUnit.test("a basic test example", function(assert) {
-  var value = "hello";
-  assert.equal(value, "hello", "We expect value to be hello");
-});
-
-makePuzzle();
+})
+makePuzzle(easyPuzzle)

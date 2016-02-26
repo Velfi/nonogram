@@ -12,8 +12,7 @@ main {
   main .hint-row {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-around;
-    padding-left: 36px; }
+    justify-content: space-around; }
     main .hint-row .hint-numbers {
       width: 50px;
       text-align: center;
