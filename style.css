@@ -1,22 +1,36 @@
+header {
+  text-align: center; }
+
 main {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center; }
   main .controls {
-    height: 7rem;
-    line-height: 7rem; }
+    height: 70px;
+    line-height: 70px; }
   main .hint-row {
     display: flex;
     flex-flow: row nowrap;
-    text-align: center; }
-    main .hint-row .hint-cell {
-      width: 7rem; }
+    justify-content: space-around;
+    padding-left: 36px; }
+    main .hint-row .hint-numbers {
+      width: 50px;
+      text-align: center;
+      align-self: flex-end; }
   main .hint-column {
-    display: none;
-    flex-flow: column; }
+    display: inline-flex;
+    flex-flow: column nowrap;
+    align-items: flex-end; }
+    main .hint-column .hint-numbers {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      height: 50px; }
+      main .hint-column .hint-numbers p {
+        padding-right: 10px; }
   main .puzzle {
-    display: flex;
+    display: inline-flex;
     flex-flow: column;
     border-left: 1px solid black;
     border-top: 1px solid black; }
@@ -24,20 +38,23 @@ main {
       display: flex;
       flex-flow: row; }
       main .puzzle .row .cell {
-        height: 7rem;
-        width: 7rem;
+        height: 50px;
+        width: 50px;
         border-right: 1px solid black;
         border-bottom: 1px solid black;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 3rem; }
+        font-size: 50px; }
+
+.container {
+  display: flex; }
 
 footer {
   display: flex;
   flex-flow: row;
   justify-content: center;
-  height: 7rem;
-  line-height: 7rem; }
+  height: 70px;
+  line-height: 70px; }
 
 /*# sourceMappingURL=style.css.map */

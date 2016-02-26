@@ -1,26 +1,45 @@
+$cell-reference-size: 50px;
+
+header {
+  text-align: center;
+}
+
 main {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
   .controls {
-    height: 7rem;
-    line-height: 7rem;
+    height: 70px;
+    line-height: 70px;
   }
   .hint-row {
     display: flex;
     flex-flow: row nowrap;
-    text-align: center;
-    .hint-cell {
-      width: 7rem;
+    justify-content: space-around;
+    padding-left: 36px;
+    .hint-numbers {
+      width: $cell-reference-size;
+      text-align: center;
+      align-self: flex-end;
     }
   }
   .hint-column {
-    display: none;
-    flex-flow: column;
+    display: inline-flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+    .hint-numbers {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      height: $cell-reference-size;
+      p {
+        padding-right: 10px;
+      }
+    }
   }
   .puzzle {
-    display: flex;
+    display: inline-flex;
     flex-flow: column;
     border-left: 1px solid black;
     border-top: 1px solid black;
@@ -28,22 +47,25 @@ main {
       display: flex;
       flex-flow: row;
       .cell {
-        height: 7rem;
-        width: 7rem;
+        height: $cell-reference-size;
+        width: $cell-reference-size;
         border-right: 1px solid black;
         border-bottom: 1px solid black;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 3rem;
+        font-size: $cell-reference-size;
       }
     }
   }
+}
+.container {
+  display: flex;
 }
 footer {
   display: flex;
   flex-flow: row;
   justify-content: center;
-  height: 7rem;
-  line-height: 7rem;
+  height: 70px;
+  line-height: 70px;
 }
