@@ -11,7 +11,7 @@ var puzzle = [
   'XXOXXXXXXOOX',
   'XXXOOOOOOOXX'
 ]
-var easyPuzzle = ['XOOXX', 'OXXOX', 'OXXOX', 'OXXOX', 'XOOXO']
+// var easyPuzzle = ['XOOXX', 'OXXOX', 'OXXOX', 'OXXOX', 'XOOXO']
 var gridMarker = 'full'
 // *************** ***Functions*** ***************  Test puzzle array is
 // formatted correctly.
@@ -36,7 +36,6 @@ function makePuzzle (puzzle_array) {
     var row = document.createElement('div')
     row.className = 'row'
     row.id = 'row' + (i).toString()
-    // row.id = 'row'+
     for (var j = 0; j < puzzle_array[i].length; j++) {
       var cell = document.createElement('div')
       cell.className = 'cell no-mark'
@@ -48,6 +47,8 @@ function makePuzzle (puzzle_array) {
   }
   hints.row(puzzle_array)
   hints.column(puzzle_array)
+  // Add padding-left to hint row to align it over the puzzle
+  $('.hint-row').css('padding-left', $('.hint-column').css('width'))
 }
 // Container of the logic for generating the hint numbers and placing them to
 // the top and the left of the puzzle.
@@ -178,4 +179,4 @@ $('#is-solved').click(function () {
     alert("You haven't gotten it quite right yet. Just keep on trying.")
   }
 })
-makePuzzle(easyPuzzle)
+makePuzzle(puzzle)

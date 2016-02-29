@@ -1,5 +1,9 @@
 $cell-reference-size: 50px;
 
+body {
+  font-family: 'skyhook mono', sans-serif;
+}
+
 header {
   text-align: center;
 }
@@ -20,11 +24,17 @@ main {
     // padding-left: 36px;
     .hint-numbers {
       width: $cell-reference-size;
+      box-sizing: border-box;
       text-align: center;
       align-self: flex-end;
+      p {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
     }
   }
   .hint-column {
+    font-size: 150%;
     display: inline-flex;
     flex-flow: column nowrap;
     align-items: flex-end;
@@ -33,8 +43,12 @@ main {
       flex-flow: row nowrap;
       align-items: center;
       height: $cell-reference-size;
+      box-sizing: border-box;
       p {
         padding-right: 10px;
+        font-size: 32px;
+        margin: 0;
+        margin-left: 20px;
       }
     }
   }
@@ -49,6 +63,7 @@ main {
       .cell {
         height: $cell-reference-size;
         width: $cell-reference-size;
+        box-sizing: border-box;
         border-right: 1px solid black;
         border-bottom: 1px solid black;
         display: flex;
