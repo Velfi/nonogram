@@ -1,72 +1,87 @@
 body {
-  font-family: 'skyhook mono', sans-serif; }
+	font-family: "skyhook mono", sans-serif;
+}
 
 header {
-  text-align: center; }
+	text-align: center;
+}
 
 main {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center; }
-  main .controls {
-    height: 70px;
-    line-height: 70px; }
-  main .hint-row {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around; }
-    main .hint-row .hint-numbers {
-      width: 50px;
-      box-sizing: border-box;
-      text-align: center;
-      align-self: flex-end; }
-      main .hint-row .hint-numbers p {
-        font-size: 32px;
-        margin-bottom: 20px; }
-  main .hint-column {
-    font-size: 150%;
-    display: inline-flex;
-    flex-flow: column nowrap;
-    align-items: flex-end; }
-    main .hint-column .hint-numbers {
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: center;
-      height: 50px;
-      box-sizing: border-box; }
-      main .hint-column .hint-numbers p {
-        padding-right: 10px;
-        font-size: 32px;
-        margin: 0;
-        margin-left: 20px; }
-  main .puzzle {
-    display: inline-flex;
-    flex-flow: column;
-    border-left: 1px solid black;
-    border-top: 1px solid black; }
-    main .puzzle .row {
-      display: flex;
-      flex-flow: row; }
-      main .puzzle .row .cell {
-        height: 50px;
-        width: 50px;
-        box-sizing: border-box;
-        border-right: 1px solid black;
-        border-bottom: 1px solid black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 50px; }
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+}
+main .controls {
+	height: 70px;
+	line-height: 70px;
+}
+main .hint-row {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+}
+main .hint-row .hint-numbers {
+	width: 50px;
+	box-sizing: border-box;
+	text-align: center;
+	align-self: flex-end;
+}
+main .hint-row .hint-numbers p {
+	font-size: 32px;
+	margin-bottom: 20px;
+}
+main .hint-column {
+	font-size: 150%;
+	display: inline-flex;
+	flex-flow: column nowrap;
+	align-items: flex-end;
+}
+main .hint-column .hint-numbers {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	height: 50px;
+	box-sizing: border-box;
+}
+main .hint-column .hint-numbers p {
+	padding-right: 10px;
+	font-size: 32px;
+	margin: 0;
+	margin-left: 20px;
+}
+main .puzzle {
+	display: inline-flex;
+	flex-flow: column;
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+}
+main .puzzle .row {
+	display: flex;
+	flex-flow: row;
+}
+main .puzzle .row .cell {
+	height: 50px;
+	width: 50px;
+	box-sizing: border-box;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 50px;
+}
 
 .container {
-  display: flex; }
+	display: flex;
+}
 
 footer {
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  height: 70px;
-  line-height: 70px; }
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	height: 70px;
+	line-height: 70px;
+}
 
 /*# sourceMappingURL=style.css.map */

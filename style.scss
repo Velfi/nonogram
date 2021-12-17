@@ -1,86 +1,86 @@
 $cell-reference-size: 50px;
 
 body {
-  font-family: 'skyhook mono', sans-serif;
+	font-family: "skyhook mono", sans-serif;
 }
 
 header {
-  text-align: center;
+	text-align: center;
 }
 
 main {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  .controls {
-    height: 70px;
-    line-height: 70px;
-  }
-  .hint-row {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    // padding-left: 36px;
-    .hint-numbers {
-      width: $cell-reference-size;
-      box-sizing: border-box;
-      text-align: center;
-      align-self: flex-end;
-      p {
-        font-size: 32px;
-        margin-bottom: 20px;
-      }
-    }
-  }
-  .hint-column {
-    font-size: 150%;
-    display: inline-flex;
-    flex-flow: column nowrap;
-    align-items: flex-end;
-    .hint-numbers {
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: center;
-      height: $cell-reference-size;
-      box-sizing: border-box;
-      p {
-        padding-right: 10px;
-        font-size: 32px;
-        margin: 0;
-        margin-left: 20px;
-      }
-    }
-  }
-  .puzzle {
-    display: inline-flex;
-    flex-flow: column;
-    border-left: 1px solid black;
-    border-top: 1px solid black;
-    .row {
-      display: flex;
-      flex-flow: row;
-      .cell {
-        height: $cell-reference-size;
-        width: $cell-reference-size;
-        box-sizing: border-box;
-        border-right: 1px solid black;
-        border-bottom: 1px solid black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: $cell-reference-size;
-      }
-    }
-  }
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	.controls {
+		height: 70px;
+		line-height: 70px;
+	}
+	.hint-row {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-around;
+		// padding-left: 36px;
+		.hint-numbers {
+			width: $cell-reference-size;
+			box-sizing: border-box;
+			text-align: center;
+			align-self: flex-end;
+			p {
+				font-size: 32px;
+				margin-bottom: 20px;
+			}
+		}
+	}
+	.hint-column {
+		font-size: 150%;
+		display: inline-flex;
+		flex-flow: column nowrap;
+		align-items: flex-end;
+		.hint-numbers {
+			display: flex;
+			flex-flow: row nowrap;
+			align-items: center;
+			height: $cell-reference-size;
+			box-sizing: border-box;
+			p {
+				padding-right: 10px;
+				font-size: 32px;
+				margin: 0;
+				margin-left: 20px;
+			}
+		}
+	}
+	.puzzle {
+		display: inline-flex;
+		flex-flow: column;
+		border-left: 1px solid black;
+		border-top: 1px solid black;
+		.row {
+			display: flex;
+			flex-flow: row;
+			.cell {
+				height: $cell-reference-size;
+				width: $cell-reference-size;
+				box-sizing: border-box;
+				border-right: 1px solid black;
+				border-bottom: 1px solid black;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: $cell-reference-size;
+			}
+		}
+	}
 }
 .container {
-  display: flex;
+	display: flex;
 }
 footer {
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  height: 70px;
-  line-height: 70px;
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	height: 70px;
+	line-height: 70px;
 }
